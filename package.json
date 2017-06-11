@@ -1,0 +1,11 @@
+{
+    "name": "ng-skeleton",
+    "version": "1.0.0",
+    "description": "Basic Angular2 Skeleton project",
+    "scripts": {
+        "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+        "lite": "lite-server",
+        "tsc": "tsc",
+        "tsc:w": "tsc -w"
+    }
+}
