@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { WeatherService } from './../services/weather.service';
 
+import { Weather } from './../models/weather';
+
 @Component({
     moduleId: module.id,
     selector: 'app-weather',
@@ -13,6 +15,7 @@ import { WeatherService } from './../services/weather.service';
 export class WeatherComponent {
 
     pos: Position;
+    weatherData = new Weather(null, null, null, null, null);
 
     constructor(private service: WeatherService) {
         this.service.getCurrentLocation()
