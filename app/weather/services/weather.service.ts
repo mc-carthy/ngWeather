@@ -30,7 +30,7 @@ export class WeatherService {
 
     getCurrentWeather(lat: number, long: number): Observable<any> {
         const url = FORECAST_ROOT + FORECAST_KEY + '/' + lat + ',' + long;
-        const queryParams = "?callback=JSONP_CALLBACK";
+        const queryParams = "?callback=JSONP_CALLBACK&units=si";
 
         return this.jsonp.get(url + queryParams)
             .map(res => res.json())
