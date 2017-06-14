@@ -42,4 +42,6 @@ testem.log
 Thumbs.db
 
 # API Keys
-*constants/constants*
+*constants/constants.ts
+*constants/constants.js
+*constants/constants.js.map
