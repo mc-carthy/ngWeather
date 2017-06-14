@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Jsonp } from '@angular/http';
+import { Jsonp, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { FORECAST_KEY, FORECAST_ROOT } from './../constants/constants';
+import { FORECAST_KEY, FORECAST_ROOT, GOOGLE_KEY, GOOGLE_ROOT } from './../constants/constants';
 
 @Injectable()
 export class WeatherService {
 
-    constructor(private jsonp: Jsonp) { }
+    constructor(private jsonp: Jsonp, private http: Http) { }
 
     getCurrentLocation(): Observable<any> {
         if (navigator.geolocation) {
@@ -37,6 +37,18 @@ export class WeatherService {
             .catch(err => {
                 console.error("Unable to retrieve weather data - ", err);
                 return Observable.throw(err.json());
+            });
+    }
+
+    getLocationName(lat: number, long: number): Observable<any> {
+        const url = GOOGLE_ROOT;
+        const queryParams = "?latlng=" + lat + "," + long + "&key=" + GOOGLE_KEY;
+
+        return this.http.get(url + queryParams)
+            .map(res => res.json())
+            .catch(err => {
+                console.error("Unable to get location - ", err);
+                return Observable.throw(err);
             });
     }
 

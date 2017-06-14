@@ -16,6 +16,7 @@ export class WeatherComponent implements OnInit {
 
     pos: Position;
     weatherData = new Weather(null, null, null, null, null);
+    currentLocation = "";
     currentSpeedUnit = "kph";
     currentTempUnit = "cel";
 
@@ -32,6 +33,7 @@ export class WeatherComponent implements OnInit {
             .subscribe(position => {
                 this.pos = position;
                 this.getCurrentWeather();
+                this.getLocationName();
             },
             err => console.error(err));
     }
@@ -48,6 +50,14 @@ export class WeatherComponent implements OnInit {
                 console.log("Weather: ", this.weatherData); // TODO - Remove
             },
             err => console.error(err));
+    }
+
+    getLocationName ()
+    {
+        this.service.getLocationName(this.pos.coords.latitude, this.pos.coords.longitude)
+            .subscribe(location => {
+                console.log(location); // TODO - Remove
+            })
     }
 
 }
