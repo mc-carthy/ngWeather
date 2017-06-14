@@ -8,7 +8,7 @@ export class TemperatureUnitPipe implements PipeTransform {
     transform(temp: number, unitType: string): number {
         switch(unitType)
         {
-            case "far":
+            case "F":
                 const far = ((temp * 1.8) + 32);
                 return far;
             default:

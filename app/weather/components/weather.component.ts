@@ -18,7 +18,7 @@ export class WeatherComponent implements OnInit {
     weatherData = new Weather(null, null, null, null, null);
     currentLocation = "";
     currentSpeedUnit = "kph";
-    currentTempUnit = "cel";
+    currentTempUnit = "C";
 
     constructor(private service: WeatherService) { }
 
@@ -68,13 +68,13 @@ export class WeatherComponent implements OnInit {
 
     toggleTempUnits()
     {
-        if (this.currentTempUnit == "far")
+        if (this.currentTempUnit == "F")
         { 
-            this.currentTempUnit = "cel";
+            this.currentTempUnit = "C";
         } 
-        else if (this.currentTempUnit == "cel")
+        else if (this.currentTempUnit == "C")
         {
-            this.currentTempUnit = "far";
+            this.currentTempUnit = "F";
         }
     }
 
