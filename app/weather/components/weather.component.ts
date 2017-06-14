@@ -56,9 +56,38 @@ export class WeatherComponent implements OnInit {
     {
         this.service.getLocationName(this.pos.coords.latitude, this.pos.coords.longitude)
             .subscribe(location => {
-                this.currentLocation = location["results"][1]["formatted_address"];
+                this.currentLocation = location["results"][3]["formatted_address"];
                 console.log(location); // TODO - Remove
             })
+    }
+
+    toggleUnits() {
+        this.toggleTempUnits();
+        this.toggleWindUnits();
+    }
+
+    toggleTempUnits()
+    {
+        if (this.currentTempUnit == "far")
+        { 
+            this.currentTempUnit = "cel";
+        } 
+        else if (this.currentTempUnit == "cel")
+        {
+            this.currentTempUnit = "far";
+        }
+    }
+
+    toggleWindUnits()
+    {
+        if (this.currentSpeedUnit == "mph")
+        { 
+            this.currentSpeedUnit = "kph";
+        } 
+        else if (this.currentSpeedUnit == "kph")
+        {
+            this.currentSpeedUnit = "mph";
+        }
     }
 
 }
