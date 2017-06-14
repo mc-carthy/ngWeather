@@ -4,6 +4,8 @@ import { WeatherService } from './../services/weather.service';
 
 import { Weather } from './../models/weather';
 
+declare var Skycons: any;
+
 @Component({
     moduleId: module.id,
     selector: 'app-weather',
@@ -19,6 +21,7 @@ export class WeatherComponent implements OnInit {
     currentLocation = "";
     currentSpeedUnit = "kph";
     currentTempUnit = "C";
+    // icons = new Skycons();
 
     constructor(private service: WeatherService) { }
 
@@ -46,8 +49,8 @@ export class WeatherComponent implements OnInit {
                 this.weatherData.summary = weather["currently"]["summary"],
                 this.weatherData.wind = weather["currently"]["windSpeed"],
                 this.weatherData.humidity = weather["currently"]["humidity"],
-                this.weatherData.icon = weather["currently"]["icon"],
-                console.log("Weather: ", this.weatherData); // TODO - Remove
+                this.weatherData.icon = weather["currently"]["icon"]
+                // this.setIcon();
             },
             err => console.error(err));
     }
@@ -89,5 +92,11 @@ export class WeatherComponent implements OnInit {
             this.currentSpeedUnit = "mph";
         }
     }
+
+    // setIcon() 
+    // {
+    //     this.icons.add("icon", this.weatherData.icon);
+    //     this.icons.play();
+    // }
 
 }
