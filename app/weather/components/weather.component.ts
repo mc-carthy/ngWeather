@@ -6,6 +6,8 @@ import { Weather } from './../models/weather';
 
 import "../js/skycons.js"
 
+import { WEATHER_COLOURS } from './../constants/weather-colour-constants';
+
 declare var Skycons: any; // Stops IDE complaining about lack of type for Skycon lib
 
 @Component({
@@ -23,9 +25,7 @@ export class WeatherComponent implements OnInit {
     currentLocation = "";
     currentSpeedUnit = "kph";
     currentTempUnit = "C";
-    icons = new Skycons({
-        "color": "#fff"
-    });
+    icons = new Skycons();
 
     constructor(private service: WeatherService) { }
 
@@ -102,6 +102,20 @@ export class WeatherComponent implements OnInit {
     {
         this.icons.add("icon", this.weatherData.icon);
         this.icons.play();
+    }
+
+    setStyles(): Object
+    {
+        if (this.weatherData.icon)
+        {
+            this.icons.color = WEATHER_COLOURS[this.weatherData.icon]["colour"];
+            return WEATHER_COLOURS[this.weatherData.icon];
+        }
+        else
+        {
+            this.icons.color = WEATHER_COLOURS["default"]["colour"];
+            return WEATHER_COLOURS["default"];
+        }
     }
 
 }

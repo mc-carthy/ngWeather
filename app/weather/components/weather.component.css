@@ -7,13 +7,12 @@
 .card-footer {
     border: none;
     border-radius: 0;
-    background-color: #00bcd4;
-    color: #fff;
 }
 
 .card-header,
 .card-footer {
     padding: 1rem 0.5rem;
+    background-color: transparent;
 }
 
 .card-block {
