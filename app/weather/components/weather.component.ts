@@ -4,7 +4,9 @@ import { WeatherService } from './../services/weather.service';
 
 import { Weather } from './../models/weather';
 
-declare var Skycons: any;
+import "../js/skycons.js"
+
+declare var Skycons: any; // Stops IDE complaining about lack of type for Skycon lib
 
 @Component({
     moduleId: module.id,
@@ -21,7 +23,9 @@ export class WeatherComponent implements OnInit {
     currentLocation = "";
     currentSpeedUnit = "kph";
     currentTempUnit = "C";
-    // icons = new Skycons();
+    icons = new Skycons({
+        "color": "#fff"
+    });
 
     constructor(private service: WeatherService) { }
 
@@ -49,8 +53,9 @@ export class WeatherComponent implements OnInit {
                 this.weatherData.summary = weather["currently"]["summary"],
                 this.weatherData.wind = weather["currently"]["windSpeed"],
                 this.weatherData.humidity = weather["currently"]["humidity"],
-                this.weatherData.icon = weather["currently"]["icon"]
-                // this.setIcon();
+                this.weatherData.icon = weather["currently"]["icon"],
+                console.log("Weather: ", this.weatherData); // TODO - Remove
+                this.setIcon();
             },
             err => console.error(err));
     }
@@ -93,10 +98,10 @@ export class WeatherComponent implements OnInit {
         }
     }
 
-    // setIcon() 
-    // {
-    //     this.icons.add("icon", this.weatherData.icon);
-    //     this.icons.play();
-    // }
+    setIcon()
+    {
+        this.icons.add("icon", this.weatherData.icon);
+        this.icons.play();
+    }
 
 }
