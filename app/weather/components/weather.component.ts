@@ -26,6 +26,7 @@ export class WeatherComponent implements OnInit {
     currentSpeedUnit = "kph";
     currentTempUnit = "C";
     icons = new Skycons();
+    dataReceived = false;
 
     constructor(private service: WeatherService) { }
 
@@ -56,6 +57,7 @@ export class WeatherComponent implements OnInit {
                 this.weatherData.icon = weather["currently"]["icon"],
                 console.log("Weather: ", this.weatherData); // TODO - Remove
                 this.setIcon();
+                this.dataReceived = true;
             },
             err => console.error(err));
     }
