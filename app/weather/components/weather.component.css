@@ -17,6 +17,26 @@
     background-color: transparent;
 }
 
+#location-wrapper {
+    font-size: 1.1rem;
+}
+
+#location-icon {
+    padding-right: 0.5rem;
+}
+
+.card-footer {
+    padding-bottom: 0.5rem;
+}
+
+#detail-row {
+    font-size: 0.8rem;
+}
+
+#helper-row {
+    padding-top: 0.5rem;
+}
+
 .card-block {
     padding: 1.5rem 0;
 }
@@ -31,7 +51,7 @@
     top: 50%;
     left: 50%;
     width: 50%;
-    margin: -15% 0 0 -25%;
+    margin: -8% 0 0 -25%;
 }
 
 canvas {
@@ -47,4 +67,8 @@ canvas {
 p {
     margin: 0.2rem;
     text-transform: uppercase;
+}
+
+.unit-label {
+    text-transform: none;
 }
